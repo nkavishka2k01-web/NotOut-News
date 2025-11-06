@@ -147,10 +147,6 @@
           <h4>ජනප්‍රිය කාණ්ඩ</h4>
           <div id="popularCats" class="row" style="flex-wrap:wrap"></div>
         </div>
-        <div class="widget">
-          <h4>වෙබ්අඩවි විස්තර</h4>
-          <p class="muted">GitHub Pages/ Blogger සඳහා සුදුසු ලෙස සකස් කළ සරළ සලාකාව. <a href="#howto">How‑To</a> බලන්න.</p>
-        </div>
       </aside>
     </div>
   </main>
@@ -161,7 +157,6 @@
         <div>
           <h3>වෙබ්අඩවි තොරතුරු</h3>
           <ul>
-            <li><a href="#howto">අලුත් පුවතක් එකතු කරන taram</a></li>
             <li><a href="#colors"> වර්ණ සැලැස්ම</a></li>
             <li><a href="#license"> අවසර/License</a></li>
           </ul>
@@ -175,34 +170,14 @@
     </div>
   </footer>
 
-  <!-- How-To (kept in page so this file can be pasted into Blogger Theme too) -->
-  <section class="container" id="howto" style="margin:24px auto 60px">
-    <h2>⚙️ How‑To</h2>
-    <ol>
-      <li><b>නම/වර්ණ වෙනස් කරන්න:</b> <code>--brand</code> වර්ණය හා "NotOut News" පෙළ header හි සංස්කරණය කරන්න.</li>
-      <li><b>Breaking News:</b> <em>+ Breaking එකක්</em> ඔබා පෙළ ඇතුළත් කරන්න. JSON​ට <code>site.breaking</code> ලෙස සුරකින අතර GitHub​හි <code>data/site.json</code> වෙත ගලවා ගත හැක.</li>
-      <li><b>නව පුවතක්:</b> <em>+ පුවතක්</em> ඔබා ශීර්ෂය/කෙටි කථාව/ඡායාරූප URL/කාණ්ඩය ඇතුළත් කරන්න. (Demo​වශයෙන් LocalStorage​හි සුරකයි.)
-        GitHub Pages​ට ගොස් <code>posts/</code> ෆෝල්ඩරයක HTML ගොනු ලෙස තබන්න. <code>data/posts.json</code> එකක් භාවිතා කළහොත් <code>POSTS_SOURCE = "json"</code> ලෙස සකසන්න.</li>
-      <li><b>GitHub Pages:</b> Repo​ක <code>Settings → Pages → Source: main / root</code> තෝරන්න. <code>index.html</code> මෙම ගොනුවයි.</li>
-      <li><b>Blogger:</b> <em>Theme → Edit HTML</em> වෙත ගොස්, කේතය सबै මකා මෙය පේස්ට් කරන්න. පිටතින් CSS/JS ගොනු භාවිතා කරයි නම් ඒවාට සම්පූර්ණ URL දිය යුතුය.</li>
-    </ol>
-    <h3 id="colors">🎨 වර්ණ සැලැස්ම</h3>
-    <p>පාරම්පරික <b>රතු</b> (Breaking), නිල් ලින්ක්, සුදු පසුබිම. ඔබට අවශ්‍ය නම් තේමා වෙනස් කිරීමට :root වෙනස් කරන්න.</p>
-    <h3 id="license">🧾 License</h3>
-    <p>MIT License — වෙබ්අඩවිය නිදහස්ව වෙනස් කර ප්‍රසිද්ධි කළ හැක.</p>
-  </section>
-
   <script>
-    // ---- Config ----
-    const POSTS_SOURCE = "inline"; // "inline" | "json"
-    const POSTS_JSON_URL = "./data/posts.json"; // If you externalize to GitHub
+    const POSTS_SOURCE = "inline";
+    const POSTS_JSON_URL = "./data/posts.json";
 
-    // Categories (Sinhala)
     const CATEGORIES = [
       "සියල්ල", "බිඳවැටෙන", "දේශපාලන", "ක්‍රීඩා", "කලා", "දේශීය", "විදේශ", "ගැස්සිප්", "ත්‍රිමාණ"
     ];
 
-    // Demo inline posts (edit/remove in production)
     let inlinePosts = [
       {id:"p1", title:"කොළඹ නගරයේ නව සංවර්ධන සැලැස්ම නිලකාරව අනාවරණය", excerpt:"මොසින් 12ක් ඇතුළත මහානගරේ තීව්‍ර වෙනසක්…", date:"2025-11-06T09:00:00Z", author:"සංවර්ධන අංශය", category:"දේශීය", cover:"https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=1200&q=80"},
       {id:"p2", title:"ශ්‍රී ලංකා කණ්ඩායම ටෙස්ට් තරගාවලිය 1–0 ජයග්‍රහණය කරයි", excerpt:"අවසන් දිනයේ දැඩි සටනකින් පසු…", date:"2025-11-05T14:30:00Z", author:"ක්‍රීඩා අංශය", category:"ක්‍රීඩා", cover:"https://images.unsplash.com/photo-1521417531069-2b2dff5a62cd?w=1200&q=80"},
@@ -213,13 +188,10 @@
       {id:"p7", title:"දේශපාලන: පාර්ලිමේන්තුවේ අද ඇතිවූ තීරණ 5ක්", excerpt:"මුදල් හා සංවර්ධන කටයුතු…", date:"2025-11-06T07:20:00Z", author:"දේශපාලන වාර්තාකරු", category:"දේශපාලන", cover:"https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80"}
     ];
 
-    // Site data (breaking etc.)
     let site = { breaking: "" };
 
-    // ---- State ----
     let state = { page: 1, pageSize: 9, cat: "සියල්ල", q: "" };
 
-    // ---- Helpers ----
     const el = sel => document.querySelector(sel);
     const fmtDate = iso => new Date(iso).toLocaleString("si-LK", {dateStyle:"medium", timeStyle:"short"});
     const byDate = (a,b)=> new Date(b.date)-new Date(a.date);
@@ -262,116 +234,4 @@
 
     function newPostPrompt(){
       const title = prompt('මාතෘකාව:'); if(!title) return;
-      const excerpt = prompt('කෙටි සාරාංශය:')||'';
-      const cover = prompt('ඡායාරූප URL (උදා: https://...)')||'';
-      const category = prompt('කාණ්ඩය (දේශපාලන/ක්‍රීඩා/කලා/…):')||'දේශීය';
-      inlinePosts.push({id:'p'+Date.now(), title, excerpt, date:new Date().toISOString(), author:'News Desk', category, cover});
-      saveLocal(); update();
-    }
-
-    function doSearch(){ state.q = el('#q').value.trim(); state.page=1; update(); }
-
-    function paginate(dir){ state.page = Math.max(1, state.page + dir); update(); }
-
-    function filtered(posts){
-      let arr = [...posts];
-      if(state.cat!=="සියල්ල") arr = arr.filter(p=>p.category===state.cat);
-      if(state.q) arr = arr.filter(p=> (p.title+p.excerpt).includes(state.q));
-      return arr.sort(byDate);
-    }
-
-    function renderFeatured(posts){
-      const wrap = el('#featured'); wrap.innerHTML='';
-      const top = posts.slice(0,3);
-      if(!top.length){ wrap.style.display='none'; return }
-      wrap.style.display='grid';
-      // Big card + two small
-      const big = top[0];
-      wrap.appendChild(card(big, true));
-      const right = document.createElement('div'); right.className='col';
-      top.slice(1).forEach(p=> right.appendChild(card(p)) );
-      wrap.appendChild(right);
-    }
-
-    function card(p, big=false){
-      const c = document.createElement('article'); c.className='card';
-      c.innerHTML = `
-        ${p.cover?`<img src="${p.cover}" alt="">`:''}
-        <div class="pad">
-          <span class="muted">${p.category} • ${fmtDate(p.date)}</span>
-          <h3>${p.title}</h3>
-          <p class="muted">${p.excerpt}</p>
-          <a class="btn" href="#" onclick="openPost('${p.id}');return false;">ඉදිරියට කියවන්න</a>
-        </div>`;
-      if(big){ c.style.gridColumn='1'; }
-      return c;
-    }
-
-    function openPost(id){
-      const p = inlinePosts.find(x=>x.id===id);
-      if(!p) return;
-      const html = `
-        <div class='container'>
-          <p><a href='/' onclick='history.back();return false;'>&larr; පිටුපසට</a></p>
-          <article class='card'>
-            ${p.cover?`<img src='${p.cover}' alt=''>`:''}
-            <div class='pad'>
-              <span class='muted'>${p.category} • ${fmtDate(p.date)} • ${p.author||''}</span>
-              <h1 style='margin:.3rem 0 0.7rem'>${p.title}</h1>
-              <p style='font-size:1.05rem;line-height:1.9'>${p.excerpt} … (දැක්ම සඳහා demo පෙළ)</p>
-            </div>
-          </article>
-        </div>`;
-      document.body.innerHTML = html; window.scrollTo(0,0);
-    }
-
-    function renderList(posts){
-      const list = el('#postlist'); list.innerHTML='';
-      const start = (state.page-1)*state.pageSize;
-      posts.slice(start, start+state.pageSize).forEach(p=> list.appendChild(card(p)) );
-    }
-
-    function renderPrevious(posts){
-      const prev = el('#previous'); prev.innerHTML='';
-      posts.slice(3, 10).forEach(p=>{
-        const d = document.createElement('div'); d.className='prev-item';
-        d.innerHTML = `
-          ${p.cover?`<img src='${p.cover}' alt=''>`:''}
-          <div>
-            <a href="#" onclick="openPost('${p.id}');return false;">${p.title}</a>
-            <div class='muted' style='font-size:.85rem'>${fmtDate(p.date)}</div>
-          </div>`;
-        prev.appendChild(d);
-      })
-    }
-
-    function renderPopularCats(posts){
-      const byCat = Object.groupBy? Object.groupBy(posts, p=>p.category) : posts.reduce((acc,p)=>{(acc[p.category] ||= []).push(p); return acc}, {});
-      const entries = Object.entries(byCat).sort((a,b)=>b[1].length-a[1].length).slice(0,6);
-      const wrap = el('#popularCats'); wrap.innerHTML='';
-      entries.forEach(([k,v])=>{
-        const a = document.createElement('a'); a.href='#'; a.className='btn'; a.textContent=`${k} (${v.length})`;
-        a.onclick=(e)=>{e.preventDefault(); state.cat=k; state.page=1; update();};
-        wrap.appendChild(a);
-      });
-    }
-
-    async function update(){
-      const all = await getPosts();
-      const posts = filtered(all);
-      el('#sectionTitle').textContent = state.cat==="සියල්ල"? 'අලුත්ම ප්‍රවෘත්ති' : state.cat + ' ප්‍රවෘත්ති';
-      renderCats();
-      renderFeatured(posts);
-      renderList(posts);
-      renderPrevious(all.sort(byDate));
-      renderPopularCats(all);
-      renderTicker();
-    }
-
-    // Init
-    loadLocal();
-    document.getElementById('yr').textContent = new Date().getFullYear();
-    update();
-  </script>
-</body>
-</html>
+      const excerpt = prompt('කෙටි
